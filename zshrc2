@@ -1,0 +1,23 @@
+# Set the default shell to zsh
+SHELL=/bin/zsh
+chsh -s $(which zsh)
+
+# Use powerlevel10k theme
+ZSH_THEME="powerlevel10k/powerlevel10k"
+
+# Add Hack Nerd Font to the font family list
+POWERLEVEL9K_MODE_ADDITIONAL_FONTDIR="/usr/share/fonts/truetype/hack"
+POWERLEVEL9K_CUSTOM_FONT="Hack Nerd Font"
+POWERLEVEL9K_CUSTOM_FONT_SIZE="12"
+
+# Set the mode to nerdfont-complete
+POWERLEVEL9K_MODE="nerdfont-complete"
+
+# Configure left prompt
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(status)
+
+# Configure right prompt
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(time)
+
+# Initialize powerlevel10k
+source /usr/share/powerlevel10k/powerlevel10k.zsh-theme
