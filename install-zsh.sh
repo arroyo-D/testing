@@ -4,6 +4,9 @@
 sudo apt update && sudo apt upgrade
 sudo apt install zsh -y
 
+# Cambiar el shell por defecto a Zsh
+chsh -s $(which zsh)
+        
 # Instalar Oh My Zsh
 sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
