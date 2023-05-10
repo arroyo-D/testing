@@ -1,34 +1,39 @@
 #!/bin/bash
 
-# Actualizar el sistema y instalar Zsh
+# Actualiza el sistema operativo y los paquetes instalados
 sudo apt update && sudo apt upgrade
+
+# Instala Zsh
 sudo apt install zsh -y
 
-# Instalar Oh My Zsh
-sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+# Cambia el shell por defecto a Zsh
+chsh -s /bin/zsh
 
-# Instalar Powerlevel10k theme
-git clone https://github.com/romkatv/powerlevel10k.git $ZSH_CUSTOM/themes/powerlevel10k
-
-# Instalar zsh-syntax-highlighting plugin
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-
-# Instalar zsh-autosuggestions plugin
-git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-
-# Cambiar el tema de Zsh
-sed -i 's/ZSH_THEME=.*/ZSH_THEME="powerlevel10k\/powerlevel10k"/' ~/.zshrc
-
-# Activar plugins en ~/.zshrc
-sed -i 's/plugins=.*/plugins=(git zsh-autosuggestions zsh-syntax-highlighting)/' ~/.zshrc
-
-# Instalar lsd
+# Instala el paquete de la utilidad de lista de archivos lsd
 sudo apt install lsd
 
-# Instalar bat
+# Instala el paquete de la utilidad de vista previa de archivos bat
 sudo apt install bat
 
-# Añadir alias a ~/.zshrc
+# Instala Oh My Zsh, un marco de trabajo para administrar la configuración de Zsh
+sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+
+# Instala el plugin de resaltado de sintaxis de Zsh
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+
+# Instala el plugin de sugerencias automáticas de Zsh
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+
+# Instala el tema Powerlevel10k para Zsh
+git clone https://github.com/romkatv/powerlevel10k.git $ZSH_CUSTOM/themes/powerlevel10k
+
+# Cambia el tema de Zsh a Powerlevel10k
+sed -i 's/ZSH_THEME=.*/ZSH_THEME="powerlevel10k\/powerlevel10k"/' ~/.zshrc
+
+# Activa los plugins zsh-autosuggestions y zsh-syntax-highlighting en el archivo .zshrc
+sed -i 's/plugins=.*/plugins=(git zsh-autosuggestions zsh-syntax-highlighting)/' ~/.zshrc
+
+# Añade aliases útiles para los comandos de lista de archivos y vista previa de archivos al archivo .zshrc
 sed -i '/# alias ohmyzsh="mate ~\/.oh-my-zsh"/a\
 alias ls='"'"'lsd'"'"'\
 alias l='"'"'ls -l'"'"'\
@@ -38,9 +43,6 @@ alias lt='"'"'ls --tree'"'"'\
 alias cat='"'"'bat'"'"'
 ' ~/.zshrc
 
-echo "[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh" >> -a ~/.zshrc 
-
-chsh -s /bin/zsh
-
-
-source .zshrc
+# Configurar Powerlevel10k
+echo 'source /usr/share/powerlevel10k/powerlevel10k.zsh-theme' >> ~/.zshrc
+p10k configure
