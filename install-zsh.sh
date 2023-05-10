@@ -37,3 +37,7 @@ alias lla='"'"'ls -la'"'"'\
 alias lt='"'"'ls --tree'"'"'\
 alias cat='"'"'bat'"'"'
 ' ~/.zshrc
+
+echo "[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh" >> -a ~/.zshrc 
+
+
