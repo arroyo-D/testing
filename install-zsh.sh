@@ -40,4 +40,7 @@ alias cat='"'"'bat'"'"'
 
 echo "[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh" >> -a ~/.zshrc 
 
+chsh -s /bin/zsh
 
+
+source .zshrc
