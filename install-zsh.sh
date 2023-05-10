@@ -15,9 +15,6 @@ sudo apt install lsd
 # Instala el paquete de la utilidad de vista previa de archivos bat
 sudo apt install bat
 
-# Instala el tema Powerlevel10k para Zsh
-git clone https://github.com/romkatv/powerlevel10k.git $ZSH_CUSTOM/themes/powerlevel10k
-
 # Instala Oh My Zsh, un marco de trabajo para administrar la configuración de Zsh
 sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
@@ -26,6 +23,9 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:
 
 # Instala el plugin de sugerencias automáticas de Zsh
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+
+# Instala el tema Powerlevel10k para Zsh
+git clone https://github.com/romkatv/powerlevel10k.git $ZSH_CUSTOM/themes/powerlevel10k
 
 # Cambia el tema de Zsh a Powerlevel10k
 sed -i 's/ZSH_THEME=.*/ZSH_THEME="powerlevel10k\/powerlevel10k"/' ~/.zshrc
