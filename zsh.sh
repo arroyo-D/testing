@@ -6,9 +6,6 @@ sudo apt update && sudo apt upgrade
 # Instala Zsh
 sudo apt install zsh lsd bat -y
 
-# Cambia el shell por defecto a Zsh
-chsh -s /bin/zshx
-
 # Instala Oh My Zsh, un marco de trabajo para administrar la configuración de Zsh
 sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
