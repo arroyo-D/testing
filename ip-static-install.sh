@@ -1,22 +1,26 @@
 #!/bin/bash
 
-# Este script configura una dirección IP estática en Ubuntu Server 21.04
+# Define la interfaz de red que deseas configurar con IP estática
+interface="enp0s1"
 
-# Abre el archivo de configuración de red en modo escritura
-sudo nano /etc/netplan/00-installer-config.yaml <<EOF
+# Define la dirección IP, la máscara de red y la puerta de enlace que deseas utilizar
+ip_address="192.168.64.199"
+subnet_mask="255.255.255.0"
+gateway="192.168.64.1"
 
 # Edita el archivo de configuración de red
+sudo tee /etc/netplan/00-installer-config.yaml >/dev/null <<EOF
 network:
   version: 2
   renderer: networkd
   ethernets:
-    enp0s1:
+    $interface:
       dhcp4: no
-      addresses: [192.168.64.199/24]  # Tu dirección IP estática
-      gateway4: 192.168.64.1  # La dirección IP de tu router
+      addresses: [$ip_address/$subnet_mask]
+      gateway4: $gateway
       nameservers:
-          addresses: [8.8.8.8, 8.8.4.4]  # Opcional: Direcciones IP de servidores DNS que quieras usar
+        addresses: [8.8.8.8, 8.8.4.4]
 EOF
 
-# Aplica los cambios en la configuración de red
+# Aplica la nueva configuración de red
 sudo netplan apply
