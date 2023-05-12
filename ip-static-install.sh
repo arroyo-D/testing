@@ -14,10 +14,12 @@ network:
   version: 2
   renderer: networkd
   ethernets:
-    $interface:
+    enp0s1:
       dhcp4: no
-      addresses: [$ip_address/$subnet_mask]
-      gateway4: $gateway
+      addresses: [192.168.64.199/24]
+      routes:
+        - to: 0.0.0.0/0
+          via: 192.168.64.1
       nameservers:
         addresses: [8.8.8.8, 8.8.4.4]
 EOF
